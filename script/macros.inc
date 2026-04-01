@@ -10,7 +10,7 @@
 .endmacro
 
 .macro SYNCHK Q
-	LDA #Q
+	LDA #(Q)
 	JSR	SYNCHR
 .endmacro
 
@@ -19,13 +19,13 @@
 .endmacro
 
 .macro LDWD	WD
-	LDA	WD
+	LDA WD
 	LDY	WD + 1
 .endmacro
 
 .macro LDWDI WD
-	LDA #<WD
-	LDY #>WD
+	LDA #<(WD)
+	LDY #>(WD)
 .endmacro
 
 .macro LDWX	WD
@@ -34,8 +34,8 @@
 .endmacro
 
 .macro LDWXI WD
-	LDA #(WD & $ff)
-	LDX #(WD >> 8)
+	LDA #<(WD)
+	LDX #>(WD)
 .endmacro
 
 .macro LDXY	WD
@@ -44,8 +44,8 @@
 .endmacro
 
 .macro LDXYI WD
-	LDX #(WD) & 255
-	LDY #(WD >> 8) & 255
+	LDX #<(WD)
+	LDY #>(WD)
 .endmacro
 
 .macro STWD WD
